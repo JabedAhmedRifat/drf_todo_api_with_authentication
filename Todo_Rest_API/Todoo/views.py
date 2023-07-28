@@ -59,10 +59,6 @@ def taskDetail(request, pk):
 @api_view(['POST'])
 @authentication_classes([TokenAuthentication])
 def taskCreate(request):
-    if request.method == 'GET':
-        tasks = Task.objects.all()
-        serializer = TaskSerializer(tasks, many=True)
-        return Response(serializer.data)
     if request.method == 'POST':
         data = {
             'title': request.data.get('title'),
@@ -73,7 +69,7 @@ def taskCreate(request):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST))
 
 
 
