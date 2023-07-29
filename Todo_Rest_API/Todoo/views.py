@@ -63,10 +63,11 @@ def taskDetail(request, pk):
 def taskCreate(request):
     if request.method == 'POST':
         data = {
+            'user': request.user.id,
             'title': request.data.get('title'),
-            'description': request.data.get('content'),
+            'description': request.data.get('description'),
             'completed': request.data.get('completed', False),
-            'deadline': request.data.get('deadline')
+            'deadline': request.data.get('deadline'),
             'priority': request.data.get('priority'),
         }
         serializer = TaskSerializer(data=data)
