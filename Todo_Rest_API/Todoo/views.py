@@ -25,11 +25,11 @@ def apiOverview(request):
     return Response(api_urls)
 
 
-def get_user_from_token(token):
-    objs = AuthToken.objects.filter(token_key=token[:CONSTANTS.TOKEN_KEY_LENGTH])
-    if len(objs) == 0:
-        return None
-    return objs.first().user
+# def get_user_from_token(token):
+#     objs = AuthToken.objects.filter(token_key=token[:CONSTANTS.TOKEN_KEY_LENGTH])
+#     if len(objs) == 0:
+#         return None
+#     return objs.first().user
 
 
 @api_view(['GET'])
